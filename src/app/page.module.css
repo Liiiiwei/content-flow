@@ -1,141 +1,193 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
-}
-
 .main {
-  display: flex;
   min-height: 100vh;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
-}
-
-.intro {
+  padding-top: calc(var(--header-height) + 80px);
+  padding-bottom: 120px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-}
-
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
-}
-
-.ctas a {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
+}
+
+.hero {
+  text-align: center;
+  max-width: 900px;
+  margin-bottom: 100px;
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.badge {
+  display: inline-flex;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
   font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-bottom: 32px;
 }
 
-a.primary {
+.title {
+  font-size: 5rem;
+  line-height: 1.05;
+  font-weight: 700;
+  /* Bold but not heavy */
+  margin-bottom: 32px;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 56px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+}
+
+.inputWrapper {
+  position: relative;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 8px;
+  /* Inner padding for the "frame" */
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inputWrapper:focus-within {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(82, 96, 255, 0.15), 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+.input {
+  width: 100%;
+  background: var(--bg-primary);
+  /* Inner distinct background */
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+  padding: 20px;
+  font-size: 1.05rem;
+  outline: none;
+  min-height: 160px;
+  resize: none;
+  line-height: 1.6;
+  font-family: 'Inter', -apple-system, sans-serif;
+  transition: background 0.2s;
+}
+
+.input:focus {
+  background: #080808;
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.generateBtn {
+  margin-top: 8px;
   background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+  color: var(--bg-primary);
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  letter-spacing: -0.01em;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.generateBtn:hover {
+  background: #E6E6E6;
+  transform: translateY(-1px);
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
+.generateBtn:active {
+  transform: scale(0.99);
+}
+
+.generateBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.generateBtnSecondary {
+  margin-top: 8px;
+  background: linear-gradient(135deg, #ec4899, #f97316);
+  color: white;
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  letter-spacing: -0.01em;
+}
+
+.generateBtnSecondary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #db2777, #ea580c);
+  transform: translateY(-1px);
+}
+
+.generateBtnSecondary:active {
+  transform: scale(0.99);
+}
+
+.generateBtnSecondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Recent Projects Section */
+.recentSection {
+  width: 100%;
+  max-width: 680px;
+  margin-top: 80px;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+}
+
+.recentSection h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
 
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
+@media (max-width: 768px) {
+  .title {
+    font-size: 3rem;
   }
 
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
+  .inputWrapper {
+    width: 100%;
   }
 }

@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# test/debug scripts with sensitive data
+list-models.js
+test-models.js
+scripts/*.test.js
+
+# local environment overrides
+.env.local
+.env.*.local
