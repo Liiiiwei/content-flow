@@ -48,3 +48,6 @@ scripts/*.test.js
 # local environment overrides
 .env.local
 .env.*.local
+
+# user data
+saved_projects/
