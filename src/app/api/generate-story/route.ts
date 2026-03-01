@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 
 import { STORY_PROMPT } from "./prompt";
 
+export const dynamic = 'force-dynamic';
+
 // 驗證 API key
 const GEMINI_KEY = process.env.GEMINI_API_KEY;
 

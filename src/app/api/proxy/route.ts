@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 // 允許的圖像來源白名單
 const ALLOWED_DOMAINS = [
     'images.unsplash.com',
