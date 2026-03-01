@@ -2,7 +2,7 @@
 
 export const dynamic = 'force-dynamic';
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import styles from "./editor.module.css";
 
@@ -22,7 +22,7 @@ import { ToolBar } from "./components/ToolBar";
 import { ProjectModal } from "./components/ProjectModal";
 import { HiddenExportContainer } from "./components/HiddenExportContainer";
 
-export default function EditorPage() {
+function EditorContent() {
     const searchParams = useSearchParams();
     const mode = searchParams.get('mode') || 'carousel';
     const isStoryMode = mode === 'story';
@@ -216,5 +216,13 @@ export default function EditorPage() {
                 onDeleteProject={deleteProject}
             />
         </div>
+    );
+}
+
+export default function EditorPage() {
+    return (
+        <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>}>
+            <EditorContent />
+        </Suspense>
     );
 }
